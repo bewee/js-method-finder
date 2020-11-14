@@ -1,46 +1,13 @@
-# Getting Started with Create React App
+This problem may be familiar to every programmer: You can illustrate what you try to achieve using an example, and you remember that there was some function doing exactly this - you just absolutely cannot remember how this function is called. In this situation, the JavaScript method finder is precisely what you are looking for.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Usage
 
-## Available Scripts
+Go to [https://bewee.github.io/js-method-finder](https://bewee.github.io/js-method-finder). Enter some sample input values together with the expected output value, click on "Find" and voilà.
 
-In the project directory, you can run:
+![image](https://user-images.githubusercontent.com/44091658/99159172-989bb780-26da-11eb-8bc2-4691fcae9c86.png)
 
-### `npm start`
+As an example, I may want to retrieve the next 2 characters which come after the first character of a string. Entering the expected output for a sample yields the required method.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Credits
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+The idea for this project was stolen from Squeak/Smalltalk.
