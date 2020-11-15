@@ -1,13 +1,13 @@
 export default {
     in: ['string', 'number', 'number'],
     out: 'string',
-    fn: function(a: string, b: number, c: number): string {
-        return a.substring(b, c);
+    fn: function(string: string, indexStart: number, indexEnd: number): string {
+        return string.substring(indexStart, indexEnd);
     },
-    print: function(a: string, b: number, c?: number): string {
-        if (c !== undefined)
-            return `${JSON.stringify(a)}.substring(${JSON.stringify(b)},${JSON.stringify(c)})`;
+    print: function(string: string, indexStart: number, indexEnd?: number): string {
+        if (indexEnd !== undefined)
+            return `${JSON.stringify(string)}.substring(${JSON.stringify(indexStart)},${JSON.stringify(indexEnd)})`;
         else
-            return `${JSON.stringify(a)}.substring(${JSON.stringify(b)})`;
+            return `${JSON.stringify(string)}.substring(${JSON.stringify(indexStart)})`;
     }
 };

@@ -12,6 +12,26 @@ export interface MethodResult {
 
 const methods: {[key: string]: Method} = require('./methods').default;
 
+function deepEqual(x: any, y: any) {
+    if (x === y) return true;
+    if (!(x instanceof Object) || !(y instanceof Object)) return false;
+    if (x.constructor !== y.constructor) return false;
+  
+    for (const p in x) {
+        if (!x.hasOwnProperty(p)) continue;
+        if (!y.hasOwnProperty(p)) return false;
+        if (x[p] === y[p]) continue;
+        if (typeof(x[p]) !== "object") return false;
+        if (!deepEqual(x[p], y[p])) return false;
+    }
+  
+    for (const p in y)
+      if (y.hasOwnProperty(p) && !x.hasOwnProperty(p))
+            return false;
+  
+    return true;
+}
+
 function entryCountListsMatch(x: {[key: string]: number}, y: {[key: string]: number}) {
     const xx = Object.assign({}, {undefined: 0, null: 0, boolean: 0, number: 0, bigint: 0, string: 0, symbol: 0, function: 0, object: 0, any: 0}, x);
     const yy = Object.assign({}, {undefined: 0, null: 0, boolean: 0, number: 0, bigint: 0, string: 0, symbol: 0, function: 0, object: 0, any: 0}, y);
@@ -107,10 +127,10 @@ export function findMethods(input: any[], output: any): MethodResult[] {
                             print: (...args: any) => print.replace(/x/g, method.print(...args)),
                         };
                     };
-                    if (result === output) {
+                    if (deepEqual(result, output)) {
                         addResult(1, method);
                     } else {
-                        switch (typeof result) {
+                        switch (typeof output) {
                             case 'boolean':
                                 addResult(2, makeMethodWrapper((x: boolean)=>!x, '!(x)'));
                                 break;
