@@ -1,10 +1,13 @@
 export default {
-    in: ['string', 'string'],
+    in: ['string', 'string', 'number'],
     out: 'boolean',
-    fn: function(a: string, b: string): boolean {
-        return a.includes(b);
+    fn: function(string: string, searchString: string, position?: number): boolean {
+        return string.includes(searchString, position);
     },
-    print: function(a: string, b: string): string {
-        return `${JSON.stringify(a)}.includes(${JSON.stringify(b)})`;
-    }
+    print: function(string: string, searchString: string, position?: number): string {
+        if (position !== undefined)
+            return `${JSON.stringify(string)}.includes(${JSON.stringify(searchString)},${JSON.stringify(position)})`;
+        else
+            return `${JSON.stringify(string)}.includes(${JSON.stringify(searchString)})`;
+    },
 };

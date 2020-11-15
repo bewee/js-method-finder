@@ -1,10 +1,13 @@
 export default {
-    in: ['string', 'string'],
+    in: ['string', 'string', 'number'],
     out: 'boolean',
-    fn: function(a: string, b: string): boolean {
-        return a.endsWith(b);
+    fn: function(string: string, searchString: string, length?: number): boolean {
+        return string.endsWith(searchString, length);
     },
-    print: function(a: string, b: string): string {
-        return `${JSON.stringify(a)}.endsWith(${JSON.stringify(b)})`;
+    print: function(string: string, searchString: string, length?: number): string {
+        if (length !== undefined)
+            return `${JSON.stringify(string)}.endsWith(${JSON.stringify(searchString)},${JSON.stringify(length)})`;
+        else
+            return `${JSON.stringify(string)}.endsWith(${JSON.stringify(searchString)})`;
     }
 };
