@@ -42,9 +42,9 @@ export default class App extends React.Component<{}, State> {
       const input: any[] = [];
       Object.keys(this.state.inputs).map(Number).forEach((i) => {
         if (i === this.maxInputID()) return;
-        input.push(JSON.parse(this.state.inputs[i].ref.current!.value));
+        input.push(eval(this.state.inputs[i].ref.current!.value));
       });
-      const output: any = JSON.parse(this.state.output.ref.current!.value);
+      const output: any = eval(this.state.output.ref.current!.value);
       const results_raw: MethodResult[] = findMethods(input, output);
       const results_grouped: MethodResult[][] = [];
       let last_prio = 0;
@@ -61,13 +61,13 @@ export default class App extends React.Component<{}, State> {
     } catch(ex) {
       const firstinput = this.state.inputs[Math.min(...Object.keys(this.state.inputs).map(Number))];
       try {
-        JSON.parse(firstinput.ref.current!.value);
+        eval(firstinput.ref.current!.value);
       } catch(ex) {
         firstinput.valid = false;
         this.forceUpdate();
       }
       try {
-        JSON.parse(this.state.output.ref.current!.value);
+        eval(this.state.output.ref.current!.value);
       } catch(ex) {
         this.state.output.valid = false;
         this.forceUpdate();
@@ -77,7 +77,7 @@ export default class App extends React.Component<{}, State> {
 
   handleOutputChange(ev: React.ChangeEvent<HTMLInputElement>) {
     try {
-      JSON.parse(ev.target.value);
+      eval(ev.target.value);
       this.state.output.valid = true;
     } catch(ex) {
       this.state.output.valid = false;
@@ -90,7 +90,7 @@ export default class App extends React.Component<{}, State> {
       this.state.inputs[this.maxInputID()].ref.current!.focus();
     } else {
       try {
-        JSON.parse(ev.target.value);
+        eval(ev.target.value);
         this.state.inputs[i].valid = true;
       } catch(ex) {
         this.state.inputs[i].valid = false;
