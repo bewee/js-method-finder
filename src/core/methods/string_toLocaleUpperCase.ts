@@ -1,13 +1,15 @@
+import { stringify } from "../helpers";
+
 export default {
-    in: ['string', 'any'],
+    in: ['string', '*any'],
     out: 'string',
     fn: function(string: string, locale : any): string {
         return string.toLocaleUpperCase(locale);
     },
     print: function(string: string, locale : any): string {
         if (locale !== undefined)
-            return `${JSON.stringify(string)}.toLocaleUpperCase(${JSON.stringify(locale)})`;
+            return `${stringify(string)}.toLocaleUpperCase(${stringify(locale)})`;
         else
-            return `${JSON.stringify(string)}.toLocaleUpperCase()`;
+            return `${stringify(string)}.toLocaleUpperCase()`;
     }
 };

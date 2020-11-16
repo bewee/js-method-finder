@@ -1,3 +1,5 @@
+import { stringify } from "../helpers";
+
 export default {
     in: ['string', 'string', 'string'],
     out: 'string',
@@ -5,6 +7,6 @@ export default {
         return string.split(substr).join(newSubstr);
     },
     print: function(string: string, substr: string, newSubstr: string): string {
-        return `${JSON.stringify(string)}.replaceAll(${JSON.stringify(substr)},${JSON.stringify(newSubstr)})`;
+        return `${stringify(string)}.replaceAll(${stringify(substr)},${stringify(newSubstr)})`;
     }
 };

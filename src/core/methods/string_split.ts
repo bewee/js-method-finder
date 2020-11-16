@@ -1,5 +1,7 @@
+import { stringify } from "../helpers";
+
 export default {
-    in: ['string', 'string', 'number'],
+    in: ['string', 'string', '*number'],
     out: 'object',
     fn: function(string: string, separator: string, limit?: number): string[] {
         console.log(string, separator, limit, string.split(separator, limit));
@@ -7,8 +9,8 @@ export default {
     },
     print: function(string: string, separator: string, limit?: number): string {
         if (limit !== undefined)
-            return `${JSON.stringify(string)}.split(${JSON.stringify(separator)},${JSON.stringify(limit)})`;
+            return `${stringify(string)}.split(${stringify(separator)},${stringify(limit)})`;
         else
-            return `${JSON.stringify(string)}.split(${JSON.stringify(separator)})`;
+            return `${stringify(string)}.split(${stringify(separator)})`;
     }
 };

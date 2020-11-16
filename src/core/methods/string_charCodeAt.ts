@@ -1,3 +1,5 @@
+import { stringify } from "../helpers";
+
 export default {
     in: ['string', 'number'],
     out: 'number',
@@ -5,6 +7,6 @@ export default {
         return string.charCodeAt(pos);
     },
     print: function(string: string, pos: number): string {
-        return `${JSON.stringify(string)}.charCodeAt(${JSON.stringify(pos)})`;
+        return `${stringify(string)}.charCodeAt(${stringify(pos)})`;
     }
 };

@@ -1,3 +1,5 @@
+import { stringify } from "../helpers";
+
 export default {
     in: ['string'],
     out: 'number',
@@ -5,6 +7,6 @@ export default {
         return string.length;
     },
     print: function(string: string): string {
-        return `${JSON.stringify(string)}.length`;
+        return `${stringify(string)}.length`;
     }
 };
