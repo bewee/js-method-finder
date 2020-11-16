@@ -1,5 +1,5 @@
 export default {
-    in: ['string', 'string', 'number'],
+    in: ['string', 'string', '*number'],
     out: 'number',
     fn: function(string: string, searchValue : string, fromIndex?: number): number {
         return string.lastIndexOf(searchValue , fromIndex);

@@ -1,5 +1,5 @@
 export default {
-    in: ['string', 'string', 'string', 'object'],
+    in: ['string', 'string', '*string', '*object'],
     out: 'number',
     fn: function(string: string, compareString : string, locales?: string, options?: {}): number {
         return string.localeCompare(compareString, locales, options);

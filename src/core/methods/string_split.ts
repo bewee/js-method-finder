@@ -1,5 +1,5 @@
 export default {
-    in: ['string', 'string', 'number'],
+    in: ['string', 'string', '*number'],
     out: 'object',
     fn: function(string: string, separator: string, limit?: number): string[] {
         console.log(string, separator, limit, string.split(separator, limit));

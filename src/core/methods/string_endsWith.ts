@@ -1,5 +1,5 @@
 export default {
-    in: ['string', 'string', 'number'],
+    in: ['string', 'string', '*number'],
     out: 'boolean',
     fn: function(string: string, searchString: string, length?: number): boolean {
         return string.endsWith(searchString, length);

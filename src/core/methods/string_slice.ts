@@ -1,5 +1,5 @@
 export default {
-    in: ['string', 'number', 'number'],
+    in: ['string', 'number', '*number'],
     out: 'string',
     fn: function(string: string, beginIndex: number, endIndex: number): string {
         return string.slice(beginIndex, endIndex);

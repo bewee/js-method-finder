@@ -1,5 +1,5 @@
 export default {
-    in: ['string', 'number', 'string'],
+    in: ['string', 'number', '*string'],
     out: 'string',
     fn: function(string: string, targetLength : number, padString?: string): string {
         return string.padEnd(targetLength, padString);

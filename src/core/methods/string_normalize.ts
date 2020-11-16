@@ -1,5 +1,5 @@
 export default {
-    in: ['string', 'string'],
+    in: ['string', '*string'],
     out: 'string',
     fn: function(string: string, form: string): string {
         return string.normalize(form);

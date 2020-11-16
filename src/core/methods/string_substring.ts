@@ -1,5 +1,5 @@
 export default {
-    in: ['string', 'number', 'number'],
+    in: ['string', 'number', '*number'],
     out: 'string',
     fn: function(string: string, indexStart: number, indexEnd: number): string {
         return string.substring(indexStart, indexEnd);

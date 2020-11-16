@@ -1,5 +1,5 @@
 export default {
-    in: ['string', 'any'],
+    in: ['string', '*any'],
     out: 'string',
     fn: function(string: string, locale : any): string {
         return string.toLocaleUpperCase(locale);
