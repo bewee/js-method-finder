@@ -17,6 +17,10 @@ interface State {
   results: MethodResult[][],
 };
 
+function evaluate(a: string) {
+  return eval(`(${a})`);
+}
+
 export default class App extends React.Component<{}, State> {
 
   state: Readonly<State> = {
@@ -33,6 +37,7 @@ export default class App extends React.Component<{}, State> {
   }
 
   componentDidMount() {
+    document.title = "JS Method Finder";
     this.addInput();
   }
 
@@ -42,9 +47,9 @@ export default class App extends React.Component<{}, State> {
       const input: any[] = [];
       Object.keys(this.state.inputs).map(Number).forEach((i) => {
         if (i === this.maxInputID()) return;
-        input.push(eval(this.state.inputs[i].ref.current!.value));
+        input.push(evaluate(this.state.inputs[i].ref.current!.value));
       });
-      const output: any = eval(this.state.output.ref.current!.value);
+      const output: any = evaluate(this.state.output.ref.current!.value);
       const results_raw: MethodResult[] = findMethods(input, output);
       const results_grouped: MethodResult[][] = [];
       let last_prio = 0;
@@ -61,13 +66,13 @@ export default class App extends React.Component<{}, State> {
     } catch(ex) {
       const firstinput = this.state.inputs[Math.min(...Object.keys(this.state.inputs).map(Number))];
       try {
-        eval(firstinput.ref.current!.value);
+        evaluate(firstinput.ref.current!.value);
       } catch(ex) {
         firstinput.valid = false;
         this.forceUpdate();
       }
       try {
-        eval(this.state.output.ref.current!.value);
+        evaluate(this.state.output.ref.current!.value);
       } catch(ex) {
         this.state.output.valid = false;
         this.forceUpdate();
@@ -77,7 +82,7 @@ export default class App extends React.Component<{}, State> {
 
   handleOutputChange(ev: React.ChangeEvent<HTMLInputElement>) {
     try {
-      eval(ev.target.value);
+      evaluate(ev.target.value);
       this.state.output.valid = true;
     } catch(ex) {
       this.state.output.valid = false;
@@ -90,9 +95,10 @@ export default class App extends React.Component<{}, State> {
       this.state.inputs[this.maxInputID()].ref.current!.focus();
     } else {
       try {
-        eval(ev.target.value);
+        evaluate(ev.target.value);
         this.state.inputs[i].valid = true;
       } catch(ex) {
+        console.log('ex', ex);
         this.state.inputs[i].valid = false;
       }
       this.forceUpdate();
@@ -152,7 +158,7 @@ export default class App extends React.Component<{}, State> {
                 />
               })}
               <Form.Control.Feedback type="invalid">
-                Please provide JSON.parsable values.
+                Please provide evaluable values.
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId="output">
@@ -165,7 +171,7 @@ export default class App extends React.Component<{}, State> {
                 className={this.state.output.valid ? '' : 'is-invalid'}
               />
               <Form.Control.Feedback type="invalid">
-                Please provide a JSON.parsable value.
+                Please provide an evaluable value.
               </Form.Control.Feedback>
             </Form.Group>
             <Button type="submit">Find</Button>
