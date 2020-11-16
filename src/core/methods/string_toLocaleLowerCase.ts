@@ -1,3 +1,5 @@
+import { stringify } from "../helpers";
+
 export default {
     in: ['string', '*any'],
     out: 'string',
@@ -6,8 +8,8 @@ export default {
     },
     print: function(string: string, locale : any): string {
         if (locale !== undefined)
-            return `${JSON.stringify(string)}.toLocaleLowerCase(${JSON.stringify(locale)})`;
+            return `${stringify(string)}.toLocaleLowerCase(${stringify(locale)})`;
         else
-            return `${JSON.stringify(string)}.toLocaleLowerCase()`;
+            return `${stringify(string)}.toLocaleLowerCase()`;
     }
 };

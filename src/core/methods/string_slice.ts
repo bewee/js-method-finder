@@ -1,3 +1,5 @@
+import { stringify } from "../helpers";
+
 export default {
     in: ['string', 'number', '*number'],
     out: 'string',
@@ -6,8 +8,8 @@ export default {
     },
     print: function(string: string, beginIndex: number, endIndex?: number): string {
         if (endIndex !== undefined)
-            return `${JSON.stringify(string)}.slice(${JSON.stringify(beginIndex)},${JSON.stringify(endIndex)})`;
+            return `${stringify(string)}.slice(${stringify(beginIndex)},${stringify(endIndex)})`;
         else
-            return `${JSON.stringify(string)}.slice(${JSON.stringify(beginIndex)})`;
+            return `${stringify(string)}.slice(${stringify(beginIndex)})`;
     }
 };

@@ -1,3 +1,5 @@
+import { stringify } from "../helpers";
+
 export default {
     in: ['string', '*string'],
     out: 'string',
@@ -6,8 +8,8 @@ export default {
     },
     print: function(string: string, form: string): string {
         if (form !== undefined)
-            return `${JSON.stringify(string)}.normalize(${JSON.stringify(form)})`;
+            return `${stringify(string)}.normalize(${stringify(form)})`;
         else
-            return `${JSON.stringify(string)}.normalize()`;
+            return `${stringify(string)}.normalize()`;
     }
 };

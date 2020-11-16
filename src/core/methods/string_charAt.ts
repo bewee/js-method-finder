@@ -1,3 +1,5 @@
+import { stringify } from "../helpers";
+
 export default {
     in: ['string', 'number'],
     out: 'string',
@@ -5,6 +7,6 @@ export default {
         return string.charAt(pos);
     },
     print: function(string: string, pos: number): string {
-        return `${JSON.stringify(string)}.charAt(${JSON.stringify(pos)})`;
+        return `${stringify(string)}.charAt(${stringify(pos)})`;
     }
 };

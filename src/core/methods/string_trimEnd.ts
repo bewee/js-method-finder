@@ -1,3 +1,5 @@
+import { stringify } from "../helpers";
+
 export default {
     in: ['string'],
     out: 'string',
@@ -5,6 +7,6 @@ export default {
         return string.trimEnd();
     },
     print: function(string: string): string {
-        return `${JSON.stringify(string)}.trimEnd()`;
+        return `${stringify(string)}.trimEnd()`;
     }
 };

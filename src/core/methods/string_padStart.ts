@@ -1,3 +1,5 @@
+import { stringify } from "../helpers";
+
 export default {
     in: ['string', 'number', '*string'],
     out: 'string',
@@ -6,8 +8,8 @@ export default {
     },
     print: function(string: string, targetLength : number, padString?: string): string {
         if (padString !== undefined)
-            return `${JSON.stringify(string)}.padStart(${JSON.stringify(targetLength )},${JSON.stringify(padString)})`;
+            return `${stringify(string)}.padStart(${stringify(targetLength )},${stringify(padString)})`;
         else
-            return `${JSON.stringify(string)}.padStart(${JSON.stringify(targetLength )})`;
+            return `${stringify(string)}.padStart(${stringify(targetLength )})`;
     }
 };

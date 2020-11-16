@@ -1,3 +1,5 @@
+import { stringify } from "../helpers";
+
 export default {
     in: ['string', 'number'],
     out: 'string',
@@ -5,6 +7,6 @@ export default {
         return string.repeat(count);
     },
     print: function(string: string, count : number): string {
-        return `${JSON.stringify(string)}.repeat(${JSON.stringify(count)})`;
+        return `${stringify(string)}.repeat(${stringify(count)})`;
     }
 };

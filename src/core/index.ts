@@ -110,10 +110,9 @@ export function findMethods(input: any[], output: any): MethodResult[] {
         if ((method.out === 'any' || method.out === typeof output) && method.in.length >= input.length) {
             let minparams = method.in.findIndex((x)=>x.startsWith('*'));
             if (minparams == -1) minparams = method.in.length;
-            if (minparams > input.length) break;
+            if (minparams > input.length) continue;
             const method_in = method.in.map((t: string) => t.startsWith('*') ? t.substr(1) : t).slice(0, input.length);
-            console.log(m, minparams, input, method_in);
-            forEachValidAllocation(input, method_in, (allocation: any[], deviation) => {
+           forEachValidAllocation(input, method_in, (allocation: any[], deviation) => {
                 try {
                     const result = method.fn(...allocation);
                     const addResult = function(priority: number, method: Method) {

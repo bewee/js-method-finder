@@ -1,3 +1,5 @@
+import { stringify } from "../helpers";
+
 export default {
     in: ['string', 'string', '*number'],
     out: 'boolean',
@@ -6,8 +8,8 @@ export default {
     },
     print: function(string: string, searchString: string, length?: number): string {
         if (length !== undefined)
-            return `${JSON.stringify(string)}.endsWith(${JSON.stringify(searchString)},${JSON.stringify(length)})`;
+            return `${stringify(string)}.endsWith(${stringify(searchString)},${stringify(length)})`;
         else
-            return `${JSON.stringify(string)}.endsWith(${JSON.stringify(searchString)})`;
+            return `${stringify(string)}.endsWith(${stringify(searchString)})`;
     }
 };

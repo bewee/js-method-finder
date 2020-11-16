@@ -1,3 +1,5 @@
+import { stringify } from "../helpers";
+
 export default {
     in: ['string', 'string', '*number'],
     out: 'number',
@@ -6,8 +8,8 @@ export default {
     },
     print: function(string: string, searchValue : string, fromIndex?: number): string {
         if (fromIndex !== undefined)
-            return `${JSON.stringify(string)}.lastIndexOf(${JSON.stringify(searchValue )},${JSON.stringify(fromIndex)})`;
+            return `${stringify(string)}.lastIndexOf(${stringify(searchValue )},${stringify(fromIndex)})`;
         else
-            return `${JSON.stringify(string)}.lastIndexOf(${JSON.stringify(searchValue )})`;
+            return `${stringify(string)}.lastIndexOf(${stringify(searchValue )})`;
     }
 };

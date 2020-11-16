@@ -1,3 +1,5 @@
+import { stringify } from "../helpers";
+
 export default {
     in: ['string', 'string', '*number'],
     out: 'boolean',
@@ -6,8 +8,8 @@ export default {
     },
     print: function(string: string, searchString: string, position?: number): string {
         if (position !== undefined)
-            return `${JSON.stringify(string)}.includes(${JSON.stringify(searchString)},${JSON.stringify(position)})`;
+            return `${stringify(string)}.includes(${stringify(searchString)},${stringify(position)})`;
         else
-            return `${JSON.stringify(string)}.includes(${JSON.stringify(searchString)})`;
+            return `${stringify(string)}.includes(${stringify(searchString)})`;
     },
 };

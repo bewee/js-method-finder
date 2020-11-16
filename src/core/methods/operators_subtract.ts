@@ -1,3 +1,5 @@
+import { stringify } from "../helpers";
+
 export default {
     in: ['any', 'any'],
     out: 'any',
@@ -5,6 +7,6 @@ export default {
         return a - b;
     },
     print: function(a: any, b: any): string {
-        return `${JSON.stringify(a)}-${JSON.stringify(b)}`;
+        return `${stringify(a)}-${stringify(b)}`;
     }
 };

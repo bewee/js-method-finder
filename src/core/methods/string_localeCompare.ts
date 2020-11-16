@@ -1,3 +1,5 @@
+import { stringify } from "../helpers";
+
 export default {
     in: ['string', 'string', '*string', '*object'],
     out: 'number',
@@ -6,10 +8,10 @@ export default {
     },
     print: function(string: string, compareString : string, locales?: string, options?: {}): string {
         if (options !== undefined)
-            return `${JSON.stringify(string)}.localeCompare(${JSON.stringify(compareString )},${JSON.stringify(locales)},${JSON.stringify(options)})`;
+            return `${stringify(string)}.localeCompare(${stringify(compareString )},${stringify(locales)},${stringify(options)})`;
         else if (locales !== undefined)
-            return `${JSON.stringify(string)}.localeCompare(${JSON.stringify(compareString )},${JSON.stringify(locales)})`;
+            return `${stringify(string)}.localeCompare(${stringify(compareString )},${stringify(locales)})`;
         else
-            return `${JSON.stringify(string)}.localeCompare(${JSON.stringify(compareString )})`;
+            return `${stringify(string)}.localeCompare(${stringify(compareString )})`;
     }
 };
